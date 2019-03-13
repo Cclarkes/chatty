@@ -6,34 +6,43 @@ import Navbar from './Navbar.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
+    const socket = new WebSocket('ws://localhost:3001');
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
+      webSocket: socket,
       currentUser: {name: 'Bob'},
-      messages: [
-        {
-          username: 'Bob',
-          content: 'Has anyone seen my marbles?',
-        },
-        {
-          username: 'Anonymous',
-          content: 'No, I think you lost them. You lost your marbles Bob. You lost them for good.'
-        }
-      ]
+      messages: []
     }
   }
 
+componentDidMount() {
+  let socket = this.state.webSocket;
+  socket.onopen = function () {
+    console.log('Client Connected')
+  }
+
+  socket.onmessage = (event) => {
+    const outsideMessage = JSON.parse(event.data);
+    this.setState({
+      messages : this.state.messages.concat(outsideMessage)
+    })
+  }
+}
+
+
+
   onSubmit (evt) {
-    console.log("event on submit", evt.key)
     if (evt.key !== "Enter") return;
     const newMessage = {
       id:(Math.random() * (5000 - 5) + 5),
       username: this.state.currentUser.name,
       content: evt.target.value
     }
-    console.log("newmessage", newMessage)
     const concatenator = this.state.messages.concat(newMessage)
     this.setState({
       messages : concatenator})
+    
+    this.state.webSocket.send(JSON.stringify(newMessage))
   }
 
   render() {
@@ -42,7 +51,10 @@ class App extends Component {
         <div>
           <Navbar/>
           <MessageList theMessageList={ this.state.messages }/>
-          <ChatBar currentUser={ this.state.currentUser } newMessage={this.newMessage} onSubmit={this.onSubmit}/>
+          <ChatBar currentUser={ this.state.currentUser }
+            webSocket={this.state.webSocket}
+            newMessage={this.newMessage}
+            onSubmit={this.onSubmit}/>
         </div>
     );
   }
