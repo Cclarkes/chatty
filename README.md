@@ -1,45 +1,33 @@
-React Boilerplate
+Chatty App
 =====================
 
-A minimal and light dev environment for ReactJS.
+A minimal and simple IM chat-room app reminiscent of the OG MSN messenger or IRC.
+Currently pretty bare-bones as far as styling goes, standby for some QOL and CSS changes.
 
 ### Usage
 
-Clone the boilerplate and create your own git repo.
+Clone the repo,install the dependencies and start both the app and the server.
+Bear in mind that ./chatty_server/server.js needs to be started independently of the main app.
 
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
-
-Install the dependencies and start the server.
-
-```
+git clone <ssh link> <name for folder>
 npm install
 npm start
 open http://localhost:3000
 ```
 
-### Static Files
+### Screenshots
 
-You can store static files like images, fonts, etc in the `build` folder.
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
 
 ### Dependencies
 
-* React
+* React + React Dom
+* Sass
+* ESLint
 * Webpack
+* SockJS Client
+* Style Loader
 * [babel-loader](https://github.com/babel/babel-loader)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
