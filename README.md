@@ -16,9 +16,9 @@ npm start
 open http://localhost:3000
 ```
 
-### Screenshots
+### Screenshot
 
-
+!["Screenshot of Chatty Client"](https://github.com/Cclarkes/chatty/blob/master/Screenshot.png)
 
 
 ### Dependencies
@@ -29,5 +29,5 @@ open http://localhost:3000
 * Webpack
 * SockJS Client
 * Style Loader
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+* babel-loader
+* webpack-dev-server
