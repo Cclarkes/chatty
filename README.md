@@ -6,12 +6,14 @@ Currently pretty bare-bones as far as styling goes, standby for some QOL and CSS
 
 ### Usage
 
-Clone the repo,install the dependencies and start both the app and the server.
+Clone the repo,install the dependencies (from both the main project folder, and the server folder) and start both the app and the server.
 Bear in mind that ./chatty_server/server.js needs to be started independently of the main app.
 
 ```
 git clone <ssh link> <name for folder>
 npm install
+<<Then, start the server from the server folder with 'Node server.js'>>
+<<Navigate back to main project folder with cd ../>>
 npm start
 open http://localhost:3000
 ```
